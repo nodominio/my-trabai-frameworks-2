@@ -14,6 +14,7 @@ export default function Menu() {
             <Nav.Link href="/">Home</Nav.Link>
             <Nav.Link href="/esportes">Esportes</Nav.Link>
             <Nav.Link href="/noticias">Noticias</Nav.Link>
+            <Nav.Link href="/usestate">UseState</Nav.Link>
             <NavDropdown title="Dropdown" id="basic-nav-dropdown">
               <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
               <NavDropdown.Item href="#action/3.2">
