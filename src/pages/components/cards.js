@@ -14,8 +14,3 @@ export default function Cards(noticia) {
         </Col>
     </>
 }
-// idnoticia*
-// titulonoticia*
-// conteudonoticia*
-// tiponoticia
-// datahoracadastro
