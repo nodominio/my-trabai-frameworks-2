@@ -1,35 +1,30 @@
-import { Card, Col, Container, Row } from "react-bootstrap";
-
+import { Container, Row } from "react-bootstrap";
+import Cards from "./components/cards";
 export async function getServerSideProps() {
-  // Fetch data from external API
-  const res = await fetch('https://my-trabai-frameworks-2.vercel.app/api/noticias/apinoticias')
-  const repo = await res.json()
+  // Fetch data from  API notícias
+  const res = await fetch("https://api-6-b-gabriel-soares.vercel.app/noticias");
+  const repo = await res.json();
   // Pass data to the page via props
-  return { props: { x: repo } }
+  return { props: { noticias: repo } };
 }
-
-export default function Home({ x }) {
-  console.log(x);
-  
-
+export default function Home({ noticias }) {
   return (
-    <Container>
-      <Row xs={1} md={3}>
-        {Array.isArray(x) ? x.map(noticia => (
-          <Col key={noticia.idnoticia}>
-            <Card>
-              <Card.Header className="text-center ">{noticia.titulonoticia}</Card.Header>
-              <Card.Body>
-                <Card.Title>{noticia.tiponoticia}</Card.Title>
-                <Card.Text>
-                  {noticia.conteudonoticia}
-                </Card.Text>
-              </Card.Body>
-              <Card.Footer className="text-muted">{noticia.datahoracadastro}</Card.Footer>
-            </Card>
-          </Col>
-        )) : "Rebola lentinho"}
-      </Row>
-    </Container>
-  )
+    <>
+      <Container>
+        <Row xs={1} md={3}>
+          {Array.isArray(noticias)
+            ? noticias.map((noticia) => (
+                <Cards
+                  idnoticia={noticia._id}
+                  conteudonoticia={noticia.conteudonoticia}
+                  titulonoticia={noticia.titulonoticia}
+                  datahoracadastro={noticia.datahoracadastro}
+                  tiponoticia={noticia.tiponoticia}
+                />
+              ))
+            : "não"}
+        </Row>
+      </Container>
+    </>
+  );
 }
